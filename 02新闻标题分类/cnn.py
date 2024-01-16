@@ -82,7 +82,7 @@ class TextCNN(nn.Module):
     def __init__(self, vocab_size, embed_dim, num_classes, filter_sizes, num_filters):
         super(TextCNN, self).__init__()
         self.embedding = nn.Embedding(vocab_size, embed_dim)
-        self.convs = nn.ModuleList([nn.Conv1d(1,num_filters, (k, embed_dim)) for k in filter_sizes])
+        self.convs = nn.ModuleList([nn.Conv2d(1,num_filters, (k, embed_dim)) for k in filter_sizes])
         self.dropout = nn.Dropout(0.5)
         self.fc = nn.Linear(len(filter_sizes) * num_filters, num_classes)
 
